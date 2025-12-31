@@ -12,13 +12,10 @@ export const useWeatherData = ({
     refetchInterval: 1000 * 60 * 5,
     queryFn: async () => {
       try {
-        const response = await fetch(
-          'http://localhost:3000/api/get-weather-data',
-          {
-            method: 'POST',
-            body: JSON.stringify({ latitude, longitude, units }),
-          },
-        )
+        const response = await fetch('/api/get-weather-data', {
+          method: 'POST',
+          body: JSON.stringify({ latitude, longitude, units }),
+        })
 
         const data = await response.json()
         return data as OpenMeteoResponse

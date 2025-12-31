@@ -11,7 +11,7 @@ export const useGeoCode = ({ city, count = 10 }: LocationQueryParams) =>
 
 const geoCodeCity = async (city: string, count: number) => {
   try {
-    const response = await fetch('http://localhost:3000/api/get-geo-code', {
+    const response = await fetch('/api/get-geo-code', {
       method: 'POST',
       body: JSON.stringify({ city, count }),
     })
