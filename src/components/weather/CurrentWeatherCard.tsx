@@ -5,7 +5,6 @@ import { formatTemperature } from '@/utils/formatting'
 import Icon from '../icons/Icon'
 import { useLastUpdated } from '@/hooks/useLastUpdated'
 import { useTime } from '@/hooks/useTime'
-import { DateTime } from 'luxon'
 
 type WeatherCardBlockProps = {
   location: Location
@@ -14,8 +13,7 @@ type WeatherCardBlockProps = {
 export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
   const conditions = useCurrentConditions(location)
   const { relative, absolute } = useLastUpdated(location)
-  const now = DateTime.local({ zone: location.timezone })
-  const currentTime = useTime(now)
+  const currentTime = useTime(location.timezone)
 
   if (!conditions) {
     return null
