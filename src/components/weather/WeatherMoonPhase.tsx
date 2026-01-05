@@ -1,5 +1,5 @@
-import { useMoonPhase } from '@/hooks/useMoonPhase'
 import { WeatherCard } from './WeatherCard'
+import { useMoonPhase } from '@/hooks/useMoonPhase'
 
 export const WeatherMoonPhase = () => {
   const { phaseName, phaseIcon, illumination } = useMoonPhase()

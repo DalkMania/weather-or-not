@@ -1,6 +1,6 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
 import { getHourFromISO } from '@/utils/calculations'
 
 type HourlyForecast = {
@@ -35,7 +35,7 @@ export const useForecast = (location: Location) => {
     units: preferences?.settings.units || 'imperial',
   })
 
-  if (!weather?.hourly || !weather?.daily) {
+  if (!weather) {
     return null
   }
 
@@ -45,7 +45,7 @@ export const useForecast = (location: Location) => {
   const currentHourIndex = getHourFromISO(weather.current.time)
 
   // Generate hourly forecast starting from current hour
-  const hourlyForecasts: HourlyForecast[] = Array.from(
+  const hourlyForecasts: Array<HourlyForecast> = Array.from(
     { length: 24 },
     (_, i) => {
       const index = currentHourIndex + i
@@ -67,7 +67,7 @@ export const useForecast = (location: Location) => {
   // Skip "Today" in daily forecast if it's after 8 PM (late evening)
   // At this point, users are more interested in tomorrow's forecast
   const skipToday = currentHourIndex >= 20
-  const dailyForecastsRaw: DailyForecast[] = weather.daily.time.map(
+  const dailyForecastsRaw: Array<DailyForecast> = weather.daily.time.map(
     (date, index) => ({
       date,
       weather_code: weather.daily.weather_code[index],

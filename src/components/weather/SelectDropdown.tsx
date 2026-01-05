@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
 import { SettingsIcon } from 'lucide-react'
+import { ClientOnly } from '@tanstack/react-router'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { ClientOnly } from '@tanstack/react-router'
 
 export const SelectDropdown = () => {
   const [temperature, setTemperature] = useState('celsius')

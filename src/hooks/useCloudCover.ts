@@ -1,6 +1,6 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
 import { getCloudCoverDescription } from '@/utils/conditions'
 
 export const useCloudCover = (location: Location) => {
@@ -15,7 +15,7 @@ export const useCloudCover = (location: Location) => {
     return null
   }
 
-  const cloudCover = Math.round(weather?.current?.cloud_cover ?? 0)
+  const cloudCover = Math.round(weather.current.cloud_cover || 0)
   const description = getCloudCoverDescription(cloudCover)
 
   return {

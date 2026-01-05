@@ -34,24 +34,24 @@ export interface OpenMeteoResponse {
     snow_depth: number
   }
   hourly: {
-    time: string[]
-    temperature_2m: number[]
-    apparent_temperature: number[]
-    precipitation_probability: number[]
-    weather_code: number[]
-    wind_speed_10m: number[]
+    time: Array<string>
+    temperature_2m: Array<number>
+    apparent_temperature: Array<number>
+    precipitation_probability: Array<number>
+    weather_code: Array<number>
+    wind_speed_10m: Array<number>
   }
   daily: {
-    time: string[]
-    weather_code: number[]
-    temperature_2m_max: number[]
-    temperature_2m_min: number[]
-    apparent_temperature_max: number[]
-    apparent_temperature_min: number[]
-    precipitation_probability_max: number[]
-    sunrise: string[]
-    sunset: string[]
-    uv_index_max: number[]
+    time: Array<string>
+    weather_code: Array<number>
+    temperature_2m_max: Array<number>
+    temperature_2m_min: Array<number>
+    apparent_temperature_max: Array<number>
+    apparent_temperature_min: Array<number>
+    precipitation_probability_max: Array<number>
+    sunrise: Array<string>
+    sunset: Array<string>
+    uv_index_max: Array<number>
   }
 }
 
@@ -86,7 +86,7 @@ export interface OpenMeteoGeocodeResult {
 }
 
 export interface OpenMeteoGeocodeResponse {
-  results: OpenMeteoGeocodeResult[]
+  results: Array<OpenMeteoGeocodeResult>
   generationtime_ms: number
 }
 

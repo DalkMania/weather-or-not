@@ -1,3 +1,7 @@
+import { WeatherForecast } from './WeatherForecast'
+import { WeatherMoonPhase } from './WeatherMoonPhase'
+import { WeatherSunSunset } from './WeatherSunSunset'
+import type { Location } from '@/types'
 import { Section } from '@/components/layout/Section'
 import { Container } from '@/components/layout/Container'
 import { CurrentWeatherCard } from '@/components/weather/CurrentWeatherCard'
@@ -6,10 +10,6 @@ import { WeatherPrecipitation } from '@/components/weather/WeatherPrecipitation'
 import { WeatherCloudCover } from '@/components/weather/WeatherCloudCover'
 import { WeatherWind } from '@/components/weather/WeatherWind'
 import { HourlyForecastCard } from '@/components/weather/HourlyForecastCard'
-import { Location } from '@/types'
-import { WeatherForecast } from './WeatherForecast'
-import { WeatherMoonPhase } from './WeatherMoonPhase'
-import { WeatherSunSunset } from './WeatherSunSunset'
 
 type WeatherDashboardProps = {
   location: Location | undefined

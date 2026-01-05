@@ -1,14 +1,10 @@
-import { useForecast } from '@/hooks/useForecast'
-import { WeatherCardBlockProps } from '@/types'
-import { formatDay, formatTemperature } from '@/utils/formatting'
 import Icon from '../icons/Icon'
+import type { WeatherCardBlockProps } from '@/types'
+import { useForecast } from '@/hooks/useForecast'
+import { formatDay, formatTemperature } from '@/utils/formatting'
 import { getWeatherInfo } from '@/utils/conditions'
 
 export const WeatherForecast = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const forecastData = useForecast(location)
 
   if (!forecastData) {

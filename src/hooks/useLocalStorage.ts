@@ -1,5 +1,6 @@
-import { useLiveQuery, eq } from '@tanstack/react-db'
-import { Favorite, Settings, settingsCollection } from '@/db-collections'
+import { eq, useLiveQuery } from '@tanstack/react-db'
+import type { Favorite, Settings } from '@/db-collections'
+import { settingsCollection } from '@/db-collections'
 
 const useLocalStorage = () => {
   const { data: preferences, isReady } = useLiveQuery((q) =>
@@ -28,10 +29,10 @@ const useLocalStorage = () => {
 }
 
 export const useSettings = () => {
-  const { preferences, settingsCollection } = useLocalStorage()
+  const { preferences, settingsCollection: setCollection } = useLocalStorage()
 
   const updateSettings = (updatedSettings: Partial<Settings>) => {
-    settingsCollection.update('user-settings', (draft) => {
+    setCollection.update('user-settings', (draft) => {
       draft.settings = { ...draft.settings, ...updatedSettings }
     })
   }
@@ -41,12 +42,12 @@ export const useSettings = () => {
   }
 
   const addFavorite = (favorite: Favorite) => {
-    settingsCollection.update('user-settings', (draft) => {
+    setCollection.update('user-settings', (draft) => {
       draft.favorites = [...draft.favorites, favorite]
     })
   }
   const removeFavorite = (favorite: Favorite) => {
-    settingsCollection.update('user-settings', (draft) => {
+    setCollection.update('user-settings', (draft) => {
       draft.favorites = [
         ...draft.favorites.filter((obj) => obj.id !== favorite.id),
       ]
@@ -54,7 +55,7 @@ export const useSettings = () => {
   }
 
   const clearFavorites = () => {
-    settingsCollection.update('user-settings', (draft) => {
+    setCollection.update('user-settings', (draft) => {
       draft.favorites = []
     })
   }

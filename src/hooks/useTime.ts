@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useInterval } from './useInterval'
 import { DateTime } from 'luxon'
+import { useInterval } from './useInterval'
 
 export const useTime = (timeZone: string) => {
   const timeNow = DateTime.local({ zone: timeZone })

@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 import { Link } from '@tanstack/react-router'
+import { SelectDropdown } from '../weather/SelectDropdown'
 import { Container } from '@/components/layout/Container'
 import { useSticky } from '@/hooks/useSticky'
 import { WeatherOrNotLogoMark } from '@/components/icons/WeatherOrNotLogoMark'
-import { SelectDropdown } from '../weather/SelectDropdown'
 
 export const Header = () => {
   const headerRef = useRef(null)

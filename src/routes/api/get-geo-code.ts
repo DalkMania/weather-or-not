@@ -1,8 +1,6 @@
-import { API_GEO } from '@/constants'
-
 import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-import { Location, OpenMeteoGeocodeResponse } from '@/types'
+import type { Location, OpenMeteoGeocodeResponse } from '@/types'
+import { API_GEO } from '@/constants'
 
 export const Route = createFileRoute('/api/get-geo-code')({
   server: {
@@ -19,30 +17,28 @@ export const Route = createFileRoute('/api/get-geo-code')({
 
           const json: OpenMeteoGeocodeResponse = await response.json()
 
-          if (json.results && json.results.length > 0) {
-            // Transform to our Location type
-            const data: Location[] = json.results.map((result) => ({
-              id: result.id,
-              name: result.name,
-              latitude: result.latitude,
-              longitude: result.longitude,
-              timezone: result.timezone,
-              admin1: result.admin1,
-              country: result.country,
-              display: [result.name, result.admin1, result.country]
-                .filter(Boolean)
-                .join(', '),
-            }))
+          // Transform to our Location type
+          const data: Array<Location> = json.results.map((result) => ({
+            id: result.id,
+            name: result.name,
+            latitude: result.latitude,
+            longitude: result.longitude,
+            timezone: result.timezone,
+            admin1: result.admin1,
+            country: result.country,
+            display: [result.name, result.admin1, result.country]
+              .filter(Boolean)
+              .join(', '),
+          }))
 
-            return new Response(JSON.stringify(data), {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            })
-          }
+          return new Response(JSON.stringify(data), {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
         } catch (error) {
           console.error(error)
-          return json({ error: 'Location not found' }, { status: 404 })
+          return Response.json({ error: 'Location not found' }, { status: 404 })
         }
       },
     },

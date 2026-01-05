@@ -21,7 +21,7 @@ import * as SunCalc from 'suncalc'
  * @param step - Step increment
  * @returns Array of numbers
  */
-export function range(start: number, stop: number, step: number): number[] {
+export function range(start: number, stop: number, step: number): Array<number> {
   return Array.from(
     { length: (stop - start) / step },
     (_, i) => start + i * step,
@@ -247,8 +247,8 @@ function getEveningForecastParts(
   tomorrowCode: number,
   todayMax: number,
   tomorrowMax: number,
-): string[] {
-  const parts: string[] = []
+): Array<string> {
+  const parts: Array<string> = []
   parts.push(getTonightCondition(0))
   const tomorrowCondition = getSimpleWeather(tomorrowCode)
   parts.push(`${tomorrowCondition} tomorrow`)
@@ -271,8 +271,8 @@ function getMorningForecastParts(
     afternoon: string | null
     evening: string | null
   },
-): string[] {
-  const parts: string[] = []
+): Array<string> {
+  const parts: Array<string> = []
   parts.push(`${currentCondition} this morning`)
   if (periods.afternoon) parts.push(`${periods.afternoon} this afternoon`)
   if (periods.evening) parts.push(`${periods.evening} this evening`)
@@ -290,8 +290,8 @@ function getAfternoonForecastParts(
     evening: string | null
   },
   tomorrowCode: number,
-): string[] {
-  const parts: string[] = []
+): Array<string> {
+  const parts: Array<string> = []
   parts.push(`${currentCondition} this afternoon`)
   if (periods.evening) parts.push(`${periods.evening} this evening`)
   if (parts.length < 2) {
@@ -315,7 +315,7 @@ function buildForecastParts(
   tomorrowCode: number,
   todayMax: number,
   tomorrowMax: number,
-): string[] {
+): Array<string> {
   if (currentHour >= 17) {
     return getEveningForecastParts(tomorrowCode, todayMax, tomorrowMax)
   }
@@ -342,17 +342,17 @@ export function generateForecastStatement(weather: {
     weather_code: number
   }
   hourly: {
-    time: string[]
-    temperature_2m: number[]
-    weather_code: number[]
-    precipitation_probability: number[]
+    time: Array<string>
+    temperature_2m: Array<number>
+    weather_code: Array<number>
+    precipitation_probability: Array<number>
   }
   daily: {
-    time: string[]
-    temperature_2m_max: number[]
-    temperature_2m_min: number[]
-    weather_code: number[]
-    sunset: string[]
+    time: Array<string>
+    temperature_2m_max: Array<number>
+    temperature_2m_min: Array<number>
+    weather_code: Array<number>
+    sunset: Array<string>
   }
 }): string {
   const currentHour = getHourFromISO(weather.current.time)

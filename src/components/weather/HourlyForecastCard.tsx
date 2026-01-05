@@ -1,16 +1,12 @@
-import { WeatherCardBlockProps } from '@/types'
 import { Card } from '../ui/card'
 import { ScrollArea } from '../ui/scroll-area'
+import Icon from '../icons/Icon'
+import type { WeatherCardBlockProps } from '@/types'
 import { useForecast } from '@/hooks/useForecast'
 import { formatTemperature, formatTime } from '@/utils/formatting'
-import Icon from '../icons/Icon'
 import { getWeatherInfo } from '@/utils/conditions'
 
 export const HourlyForecastCard = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const forecastData = useForecast(location)
 
   if (!forecastData) {

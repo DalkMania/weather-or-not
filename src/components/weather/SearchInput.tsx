@@ -1,6 +1,9 @@
-import { useId, SetStateAction, useState, useEffect } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { Globe } from 'lucide-react'
-import { Location } from '@/types'
+import { ClientOnly } from '@tanstack/react-router'
+import { LocationInput } from '../LocationInput'
+import type { SetStateAction } from 'react'
+import type { Location } from '@/types'
 import {
   Command,
   CommandEmpty,
@@ -11,8 +14,6 @@ import {
 } from '@/components/ui/command'
 import { defaultSuggestions } from '@/utils/default-suggestions'
 import { useGeoCode } from '@/queries/useGeoCode'
-import { ClientOnly } from '@tanstack/react-router'
-import { LocationInput } from '../LocationInput'
 import { useSettings } from '@/hooks/useLocalStorage'
 
 type SearchProps = {
@@ -26,7 +27,7 @@ export const SearchInput = ({
 }: SearchProps) => {
   const { getFavorites } = useSettings()
   const [value, setValue] = useState('')
-  const [results, setResults] = useState<Location[]>([])
+  const [results, setResults] = useState<Array<Location>>([])
   const id = useId()
 
   const { data } = useGeoCode({ city: value, count: 10 })
@@ -60,7 +61,7 @@ export const SearchInput = ({
       <CommandList>
         <ClientOnly>
           <CommandEmpty>No results found.</CommandEmpty>
-          {favorites?.length === 0 ? (
+          {favorites.length === 0 ? (
             <CommandGroup heading="Suggestions">
               {defaultSuggestions.map((item) => (
                 <CommandItem

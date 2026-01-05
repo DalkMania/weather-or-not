@@ -1,6 +1,7 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import type { IconName } from '@/components/icons/Icon';
 import { Card } from '@/components/ui/card'
-import Icon, { IconName } from '@/components/icons/Icon'
+import Icon from '@/components/icons/Icon'
 import { cn } from '@/utils/utils'
 
 type WeatherCardProps = {

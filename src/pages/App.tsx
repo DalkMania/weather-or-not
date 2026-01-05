@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Location } from '@/types'
+import { ClientOnly } from '@tanstack/react-router'
+import type { Location } from '@/types'
 import { Section } from '@/components/layout/Section'
 import { Container } from '@/components/layout/Container'
 import { SearchInput } from '@/components/weather/SearchInput'
 import { WeatherDashboard } from '@/components/weather/WeatherDashboard'
-import { ClientOnly } from '@tanstack/react-router'
 import { LoadingSkeleton } from '@/components/LoadingSkeleton'
 
 export const App = () => {

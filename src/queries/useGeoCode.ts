@@ -1,5 +1,5 @@
-import { Location, LocationQueryParams } from '@/types'
 import { useQuery } from '@tanstack/react-query'
+import type { Location, LocationQueryParams } from '@/types'
 
 export const useGeoCode = ({ city, count = 10 }: LocationQueryParams) =>
   useQuery({
@@ -17,7 +17,7 @@ const geoCodeCity = async (city: string, count: number) => {
     })
 
     const data = await response.json()
-    return data as Location[]
+    return data as Array<Location>
   } catch (error: any) {
     console.error('Error fetching data:', error)
   }

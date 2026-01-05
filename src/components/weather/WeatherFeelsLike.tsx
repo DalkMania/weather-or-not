@@ -1,8 +1,8 @@
-import { useFeelsLike } from '@/hooks/useFeelsLike'
-import { Location } from '@/types'
 import { Card } from '../ui/card'
-import { formatTemperature } from '@/utils/formatting'
 import Icon from '../icons/Icon'
+import type { Location } from '@/types'
+import { useFeelsLike } from '@/hooks/useFeelsLike'
+import { formatTemperature } from '@/utils/formatting'
 
 type WeatherCardBlockProps = {
   location: Location
@@ -17,10 +17,6 @@ const getThermometerIcon = (feels: number, actual: number) => {
 }
 
 export const WeatherFeelsLike = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const { feelsLike, actual, unit, description } = useFeelsLike(location)
   const icon = getThermometerIcon(feelsLike, actual)
 

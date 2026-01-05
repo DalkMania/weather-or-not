@@ -1,12 +1,8 @@
-import { useWindData } from '@/hooks/useWindData'
 import { WeatherCard } from './WeatherCard'
-import { WeatherCardBlockProps } from '@/types'
+import type { WeatherCardBlockProps } from '@/types'
+import { useWindData } from '@/hooks/useWindData'
 
 export const WeatherWind = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const { windSpeed, windGusts, windDirection, directionLabel, speedUnit } =
     useWindData(location)
 

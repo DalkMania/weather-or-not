@@ -1,4 +1,5 @@
-import { useRef, type DependencyList, type RefObject } from "react";
+import {   useRef } from "react";
+import type {DependencyList, RefObject} from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 
 interface IPosition {

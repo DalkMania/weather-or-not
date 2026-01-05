@@ -1,6 +1,6 @@
-import { Location } from '@/types'
+import type { Location } from '@/types'
 
-export const defaultSuggestions: Location[] = [
+export const defaultSuggestions: Array<Location> = [
   {
     id: 5128581,
     name: 'New York',

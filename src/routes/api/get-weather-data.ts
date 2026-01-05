@@ -1,9 +1,9 @@
 import { fetchWeatherApi } from 'openmeteo'
-import { API_WEATHER } from '@/constants'
 
 import { createFileRoute } from '@tanstack/react-router'
 import { json } from '@tanstack/react-start'
-import { OpenMeteoResponse } from '@/types'
+import type { OpenMeteoResponse } from '@/types'
+import { API_WEATHER } from '@/constants'
 
 export const Route = createFileRoute('/api/get-weather-data')({
   server: {
@@ -73,7 +73,7 @@ export const Route = createFileRoute('/api/get-weather-data')({
           )
           const sunriseSunsetData = await sunriseSunsetResponse.json()
 
-          if (!responses || responses.length === 0) {
+          if (responses.length === 0) {
             throw new Error('No response from Open-Meteo API')
           }
 
@@ -198,7 +198,11 @@ export const Route = createFileRoute('/api/get-weather-data')({
   },
 })
 
-export function range(start: number, stop: number, step: number): number[] {
+export function range(
+  start: number,
+  stop: number,
+  step: number,
+): Array<number> {
   return Array.from(
     { length: (stop - start) / step },
     (_, i) => start + i * step,

@@ -1,6 +1,6 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
 import { calculateSunPosition } from '@/utils/calculations'
 import { formatTimeWithMinutes } from '@/utils/formatting'
 
@@ -12,9 +12,9 @@ export const useSunriseSunset = (location: Location) => {
     units: preferences?.settings.units || 'imperial',
   })
 
-  const sunriseISO = weather?.daily?.sunrise?.[0]
-  const sunsetISO = weather?.daily?.sunset?.[0]
-  const now = weather?.current?.time
+  const sunriseISO = weather?.daily.sunrise[0]
+  const sunsetISO = weather?.daily.sunset[0]
+  const now = weather?.current.time
 
   const sunrise = sunriseISO ? formatTimeWithMinutes(sunriseISO) : '--:--'
   const sunset = sunsetISO ? formatTimeWithMinutes(sunsetISO) : '--:--'
@@ -25,7 +25,7 @@ export const useSunriseSunset = (location: Location) => {
     sunset,
     sunPosition,
     timeZone: weather?.timezone,
-    lastUpdated: weather?.current?.time,
+    lastUpdated: weather?.current.time,
     sunriseISO,
     sunsetISO,
   }

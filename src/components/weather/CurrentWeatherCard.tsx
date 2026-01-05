@@ -1,8 +1,8 @@
-import { useCurrentConditions } from '@/hooks/useCurrentConditions'
-import { Location } from '@/types'
 import { Card } from '../ui/card'
-import { formatTemperature } from '@/utils/formatting'
 import Icon from '../icons/Icon'
+import type { Location } from '@/types'
+import { useCurrentConditions } from '@/hooks/useCurrentConditions'
+import { formatTemperature } from '@/utils/formatting'
 import { useLastUpdated } from '@/hooks/useLastUpdated'
 import { useTime } from '@/hooks/useTime'
 
@@ -35,7 +35,7 @@ export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
       <h2 className="uppercase font-sans text-muted-foreground font-normal">
         <span className="block text-center">{locationDisplay}</span>
         <span className="block text-center">
-          {currentTime && `Local Time: ${currentTime.toFormat('tt')}`}
+          {`Local Time: ${currentTime.toFormat('tt')}`}
         </span>
       </h2>
       <div className="flex gap-4 items-center">

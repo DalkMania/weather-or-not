@@ -1,8 +1,8 @@
-import { WeatherCardBlockProps } from '@/types'
+import { DateTime } from 'luxon'
 import { WeatherCard } from './WeatherCard'
+import type { WeatherCardBlockProps } from '@/types'
 import { useSunriseSunset } from '@/hooks/useSunriseSunset'
 import { formatRelativeFromMs, formatRelativeToMs } from '@/utils/formatting'
-import { DateTime } from 'luxon'
 
 export const WeatherSunSunset = ({ location }: WeatherCardBlockProps) => {
   const { sunrise, sunset, sunPosition, timeZone, sunriseISO, sunsetISO } =
@@ -73,7 +73,7 @@ const calculateTimeString = (
     return formatRelativeToMs(sunset.diff(now).toMillis())
   }
 
-  //sunrise
+  // sunrise
   if (sunPosition > 0 && sunPosition < 50) {
     if (now.toMillis() > sunrise.toMillis()) {
       return formatRelativeFromMs(now.diff(sunrise).toMillis())
@@ -82,7 +82,7 @@ const calculateTimeString = (
     return formatRelativeToMs(sunrise.diff(now).toMillis())
   }
 
-  //sunset
+  // sunset
   if (sunPosition >= 50 && sunPosition < 100) {
     if (now.toMillis() > sunset.toMillis()) {
       return formatRelativeFromMs(now.diff(sunset).toMillis())

@@ -1,9 +1,9 @@
-import { Location } from '@/types'
-import { formatRelativeFromMs, formatTimeWithMinutes } from '@/utils/formatting'
-import { useWeatherData } from '@/queries/useWeatherData'
+import { useEffect, useState } from 'react'
 import { useSettings } from './useLocalStorage'
 import { useInterval } from './useInterval'
-import { useEffect, useState } from 'react'
+import type { Location } from '@/types'
+import { formatRelativeFromMs, formatTimeWithMinutes } from '@/utils/formatting'
+import { useWeatherData } from '@/queries/useWeatherData'
 
 export const useLastUpdated = (
   location: Location,
@@ -29,7 +29,7 @@ export const useLastUpdated = (
     setNow(new Date().getTime())
   }, 60 * 1000)
 
-  const iso = data?.current?.time ?? null
+  const iso = data?.current.time ?? null
 
   // Absolute label from API's current.time (already converted to location's timezone in our transformer)
   const absolute = iso ? formatTimeWithMinutes(iso) : null

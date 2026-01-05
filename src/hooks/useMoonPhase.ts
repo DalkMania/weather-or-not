@@ -1,10 +1,11 @@
+import type { IconName } from '@/components/icons/Icon'
 import { getMoonIllumination } from '@/utils/calculations'
 import { getMoonPhaseIcon, getMoonPhaseName } from '@/utils/conditions'
 import { getMoonIlluminationPercentage } from '@/utils/formatting'
 
 export type MoonPhaseData = {
   phaseName: string
-  phaseIcon: import('@/components/icons/Icon').IconName
+  phaseIcon: IconName
   illumination: string
   fraction: number
   phase: number

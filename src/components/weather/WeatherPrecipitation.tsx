@@ -1,12 +1,8 @@
-import { usePrecipitation } from '@/hooks/usePrecipitation'
 import { WeatherCard } from './WeatherCard'
-import { WeatherCardBlockProps } from '@/types'
+import type { WeatherCardBlockProps } from '@/types'
+import { usePrecipitation } from '@/hooks/usePrecipitation'
 
 export const WeatherPrecipitation = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const {
     formattedRain,
     formattedSnow,

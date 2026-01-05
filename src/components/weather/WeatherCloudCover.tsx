@@ -1,13 +1,9 @@
-import { useCloudCover } from '@/hooks/useCloudCover'
 import { Progress } from '../ui/progress'
 import { WeatherCard } from './WeatherCard'
-import { WeatherCardBlockProps } from '@/types'
+import type { WeatherCardBlockProps } from '@/types'
+import { useCloudCover } from '@/hooks/useCloudCover'
 
 export const WeatherCloudCover = ({ location }: WeatherCardBlockProps) => {
-  if (!location) {
-    return null
-  }
-
   const clouds = useCloudCover(location)
 
   if (!clouds) {

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { HeartIcon, SearchIcon } from 'lucide-react'
+import { ClientOnly } from '@tanstack/react-router'
+import type { Location } from '@/types'
 import { cn } from '@/utils/utils'
 import { useSettings } from '@/hooks/useLocalStorage'
-import { Location } from '@/types'
-import { ClientOnly } from '@tanstack/react-router'
 
 type LocationInputProps = React.ComponentProps<
   typeof CommandPrimitive.Input

@@ -1,7 +1,7 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
-import { getFeelsLikeDescription } from '@/utils/conditions'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
+import { getFeelsLikeDescription } from '@/utils/conditions'
 
 /**
  * Hook to get processed feels like (apparent temperature) data for display.
@@ -17,8 +17,8 @@ export const useFeelsLike = (location: Location) => {
     units: preferences?.settings.units || 'imperial',
   })
 
-  const feelsLike = weather?.current?.apparent_temperature || 0
-  const actual = weather?.current?.temperature_2m || 0
+  const feelsLike = weather?.current.apparent_temperature || 0
+  const actual = weather?.current.temperature_2m || 0
   const description = getFeelsLikeDescription(feelsLike, actual)
 
   return {

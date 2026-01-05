@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { OpenMeteoResponse, WeatherQueryParams } from '@/types'
+import type { OpenMeteoResponse, WeatherQueryParams } from '@/types'
 
 export const useWeatherData = ({
   latitude,

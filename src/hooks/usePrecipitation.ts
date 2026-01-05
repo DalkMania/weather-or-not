@@ -1,6 +1,6 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
 import { formatPrecipitation } from '@/utils/formatting'
 
 export const usePrecipitation = (location: Location) => {
@@ -11,9 +11,9 @@ export const usePrecipitation = (location: Location) => {
     units: preferences?.settings.units || 'imperial',
   })
 
-  const rain = weather?.current?.rain ?? 0
-  const showers = weather?.current?.showers ?? 0
-  const snowfall = weather?.current?.snowfall ?? 0
+  const rain = weather?.current.rain ?? 0
+  const showers = weather?.current.showers ?? 0
+  const snowfall = weather?.current.snowfall ?? 0
 
   // Total liquid precipitation (rain + showers)
   const totalLiquid = rain + showers

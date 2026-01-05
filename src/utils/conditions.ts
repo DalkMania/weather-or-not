@@ -1,3 +1,4 @@
+import type { IconName } from '@/components/icons/Icon'
 /**
  * Generic range-based lookup helper.
  * Returns the first matching result based on value ranges.
@@ -112,7 +113,7 @@ export function getWeatherInfo(
   sunset?: string,
 ): {
   description: string
-  icon: import('@/components/icons/Icon').IconName
+  icon: IconName
 } {
   // Determine if it's day or night
   let isDaytime = true // default to day
@@ -136,10 +137,9 @@ export function getWeatherInfo(
     'overcast-rain',
     'overcast-snow',
   ])
-  const icon: import('@/components/icons/Icon').IconName =
-    iconsWithoutDayNight.has(basmilusIcon)
-      ? (basmilusIcon as import('@/components/icons/Icon').IconName)
-      : (`${basmilusIcon}-${dayNight}` as import('@/components/icons/Icon').IconName)
+  const icon: IconName = iconsWithoutDayNight.has(basmilusIcon)
+    ? (basmilusIcon as IconName)
+    : (`${basmilusIcon}-${dayNight}` as IconName)
 
   return {
     description,
@@ -329,9 +329,7 @@ export function getMoonPhaseName(phase: number): string {
  * @param phase - Moon phase value from SunCalc (0.0 to 1.0)
  * @returns Moon phase icon name (e.g., 'moon-new', 'moon-full')
  */
-export function getMoonPhaseIcon(
-  phase: number,
-): import('@/components/icons/Icon').IconName {
+export function getMoonPhaseIcon(phase: number): IconName {
   return getRangeBasedValue(phase, [
     { max: 0.0625, result: 'moon-new' },
     { max: 0.1875, result: 'moon-waxing-crescent' },

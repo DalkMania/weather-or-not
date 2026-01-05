@@ -1,6 +1,6 @@
-import { useWeatherData } from '@/queries/useWeatherData'
-import { Location } from '@/types'
 import { useSettings } from './useLocalStorage'
+import type { Location } from '@/types'
+import { useWeatherData } from '@/queries/useWeatherData'
 import { generateForecastStatement } from '@/utils/calculations'
 import { getWeatherInfo } from '@/utils/conditions'
 
