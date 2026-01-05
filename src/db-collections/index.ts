@@ -9,6 +9,7 @@ const LocationSchema = z.object({
   name: z.string(),
   latitude: z.number(),
   longitude: z.number(),
+  timezone: z.string(),
   admin1: z.optional(z.string()),
   country: z.string(),
   display: z.string(),

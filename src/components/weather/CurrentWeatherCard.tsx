@@ -4,6 +4,8 @@ import { Card } from '../ui/card'
 import { formatTemperature } from '@/utils/formatting'
 import Icon from '../icons/Icon'
 import { useLastUpdated } from '@/hooks/useLastUpdated'
+import { useTime } from '@/hooks/useTime'
+import { DateTime } from 'luxon'
 
 type WeatherCardBlockProps = {
   location: Location
@@ -12,6 +14,8 @@ type WeatherCardBlockProps = {
 export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
   const conditions = useCurrentConditions(location)
   const { relative, absolute } = useLastUpdated(location)
+  const now = DateTime.local({ zone: location.timezone })
+  const currentTime = useTime(now)
 
   if (!conditions) {
     return null
@@ -31,7 +35,10 @@ export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
   return (
     <Card className="flex items-center col-start-1 col-end-4 row-start-1 row-end-2">
       <h2 className="uppercase font-sans text-muted-foreground font-normal">
-        {locationDisplay}
+        <span className="block text-center">{locationDisplay}</span>
+        <span className="block text-center">
+          {currentTime && `Local Time: ${currentTime.toFormat('tt')}`}
+        </span>
       </h2>
       <div className="flex gap-4 items-center">
         <Icon icon={icon} alt="" />

@@ -26,6 +26,7 @@ export const Route = createFileRoute('/api/get-geo-code')({
               name: result.name,
               latitude: result.latitude,
               longitude: result.longitude,
+              timezone: result.timezone,
               admin1: result.admin1,
               country: result.country,
               display: [result.name, result.admin1, result.country]

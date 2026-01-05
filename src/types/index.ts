@@ -3,6 +3,7 @@ export interface Location {
   name: string
   latitude: number // Used in URL generation for precise location lookup
   longitude: number // Used in URL generation for precise location lookup
+  timezone: string
   admin1?: string
   country: string
   display: string // Formatted display string like "Enterprise, Alabama, United States"
@@ -73,7 +74,7 @@ export interface OpenMeteoGeocodeResult {
   latitude: number
   longitude: number
   elevation?: number
-  timezone?: string
+  timezone: string
   feature_code: string
   country_code: string
   country: string
