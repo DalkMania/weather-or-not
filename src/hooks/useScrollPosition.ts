@@ -1,46 +1,47 @@
-import {   useRef } from "react";
-import type {DependencyList, RefObject} from "react";
-import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
+import { useRef } from 'react'
+import type { DependencyList, RefObject } from 'react'
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 
 interface IPosition {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 interface IScrollProps {
-  prevPos: IPosition;
-  currPos: IPosition;
+  prevPos: IPosition
+  currPos: IPosition
 }
 
-type ElementRef = RefObject<HTMLElement | null>;
+type ElementRef = RefObject<HTMLElement | null>
 
-const isBrowser = typeof window !== `undefined`;
-const zeroPosition = { x: 0, y: 0 };
+const isBrowser = typeof window !== `undefined`
+const zeroPosition = { x: 0, y: 0 }
 
-const getClientRect = (element?: HTMLElement | null) => element?.getBoundingClientRect();
+const getClientRect = (element?: HTMLElement | null) =>
+  element?.getBoundingClientRect()
 
 const getScrollPosition = ({
   element,
   useWindow,
   boundingElement,
 }: {
-  element?: ElementRef;
-  boundingElement?: ElementRef;
-  useWindow?: boolean;
+  element?: ElementRef
+  boundingElement?: ElementRef
+  useWindow?: boolean
 }) => {
   if (!isBrowser) {
-    return zeroPosition;
+    return zeroPosition
   }
 
   if (useWindow) {
-    return { x: window.scrollX, y: window.scrollY };
+    return { x: window.scrollX, y: window.scrollY }
   }
 
-  const targetPosition = getClientRect(element?.current || document.body);
-  const containerPosition = getClientRect(boundingElement?.current);
+  const targetPosition = getClientRect(element?.current || document.body)
+  const containerPosition = getClientRect(boundingElement?.current)
 
   if (!targetPosition) {
-    return zeroPosition;
+    return zeroPosition
   }
 
   return containerPosition
@@ -48,8 +49,8 @@ const getScrollPosition = ({
         x: (containerPosition.x || 0) - (targetPosition.x || 0),
         y: (containerPosition.y || 0) - (targetPosition.y || 0),
       }
-    : { x: targetPosition.left, y: targetPosition.top };
-};
+    : { x: targetPosition.left, y: targetPosition.top }
+}
 
 export const useScrollPosition = (
   effect: (props: IScrollProps) => void,
@@ -57,50 +58,52 @@ export const useScrollPosition = (
   element?: ElementRef,
   useWindow?: boolean,
   wait?: number,
-  boundingElement?: ElementRef
+  boundingElement?: ElementRef,
 ): void => {
-  const position = useRef(getScrollPosition({ useWindow, boundingElement }));
+  const position = useRef(getScrollPosition({ useWindow, boundingElement }))
 
-  let throttleTimeout: number | null = null;
+  let throttleTimeout: number | null = null
 
   const callBack = () => {
-    const currPos = getScrollPosition({ element, useWindow, boundingElement });
-    effect({ prevPos: position.current, currPos });
-    position.current = currPos;
-    throttleTimeout = null;
-  };
+    const currPos = getScrollPosition({ element, useWindow, boundingElement })
+    effect({ prevPos: position.current, currPos })
+    position.current = currPos
+    throttleTimeout = null
+  }
 
   useIsomorphicLayoutEffect(() => {
     if (!isBrowser) {
-      return undefined;
+      return undefined
     }
 
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
-          throttleTimeout = window.setTimeout(callBack, wait);
+          throttleTimeout = window.setTimeout(callBack, wait)
         }
       } else {
-        callBack();
+        callBack()
       }
-    };
+    }
 
     if (boundingElement) {
-      boundingElement.current?.addEventListener("scroll", handleScroll, { passive: true });
+      boundingElement.current?.addEventListener('scroll', handleScroll, {
+        passive: true,
+      })
     } else {
-      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener('scroll', handleScroll, { passive: true })
     }
 
     return () => {
       if (boundingElement) {
-        boundingElement.current?.removeEventListener("scroll", handleScroll);
+        boundingElement.current?.removeEventListener('scroll', handleScroll)
       } else {
-        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener('scroll', handleScroll)
       }
 
       if (throttleTimeout) {
-        clearTimeout(throttleTimeout);
+        clearTimeout(throttleTimeout)
       }
-    };
-  }, deps);
-};
+    }
+  }, deps)
+}

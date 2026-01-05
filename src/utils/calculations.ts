@@ -21,7 +21,11 @@ import * as SunCalc from 'suncalc'
  * @param step - Step increment
  * @returns Array of numbers
  */
-export function range(start: number, stop: number, step: number): Array<number> {
+export function range(
+  start: number,
+  stop: number,
+  step: number,
+): Array<number> {
   return Array.from(
     { length: (stop - start) / step },
     (_, i) => start + i * step,

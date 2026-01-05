@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { IconName } from '@/components/icons/Icon';
+import type { IconName } from '@/components/icons/Icon'
 import { Card } from '@/components/ui/card'
 import Icon from '@/components/icons/Icon'
 import { cn } from '@/utils/utils'
