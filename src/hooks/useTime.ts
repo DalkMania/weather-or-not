@@ -8,7 +8,7 @@ export const useTime = (timeZone: string) => {
 
   useEffect(() => {
     setNow(timeNow)
-  }, [timeNow])
+  }, [timeZone])
 
   useInterval(() => {
     setNow(now.plus(1000))
