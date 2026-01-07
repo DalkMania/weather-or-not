@@ -30,8 +30,8 @@ export const WeatherDashboard = ({ location }: WeatherDashboardProps) => {
         <WeatherWind location={location} />
         <WeatherMoonPhase />
         <WeatherSunSunset location={location} />
-        {/*<HourlyForecastCard location={location} />
-        <WeatherForecast location={location} /> */}
+        {/*<HourlyForecastCard location={location} /> */}
+        <WeatherForecast location={location} />
       </Container>
     </Section>
   )

@@ -14,7 +14,7 @@ export const WeatherForecast = ({ location }: WeatherCardBlockProps) => {
   const { weather, dailyForecasts, tempUnit, tempScale } = forecastData
 
   return (
-    <div className="flex flex-col bg-card text-card-foreground gap-6 rounded-xl border px-4 py-6 shadow-sm w-full col-start-1 col-end-5">
+    <div className="flex flex-col bg-card text-card-foreground gap-6 rounded-xl border px-4 py-6 shadow-sm w-full col-span-full row-start-9 md:row-start-6 lg:row-start-5 xl:row-start-4">
       <h2 className="uppercase font-sans text-muted-foreground font-normal">
         10 Day Forecast
       </h2>
