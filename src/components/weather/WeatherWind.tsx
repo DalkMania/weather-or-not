@@ -13,7 +13,7 @@ export const WeatherWind = ({ location }: WeatherCardBlockProps) => {
       title="Wind"
       icon={windIcon}
       iconAlt="Wind Information"
-      className="row-start-3 row-end-4 col-start-1 col-end-2"
+      className="row-start-5 row-end-6 col-start-1 col-end-2 md:row-start-3 md:row-end-4 md:col-start-2 md:col-end-3 lg:col-start-1 lg:col-end-2"
     >
       <h4 className="text-3xl">
         {windSpeed} {speedUnit}

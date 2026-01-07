@@ -9,7 +9,7 @@ export const WeatherMoonPhase = () => {
       title="Moon Phase"
       icon={phaseIcon}
       iconAlt="Moon Phase"
-      className="row-start-3 row-end-4 col-start-2 col-end-3"
+      className="row-start-6 row-end-7 md:row-start-4 md:row-end-5 lg:row-start-3 lg:row-end-4 lg:col-start-2 lg:col-end-3"
     >
       <h4 className="text-3xl text-center">{phaseName}</h4>
       <p className="text-sm text-muted-foreground mt-auto">

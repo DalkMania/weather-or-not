@@ -22,7 +22,7 @@ export const WeatherDashboard = ({ location }: WeatherDashboardProps) => {
 
   return (
     <Section>
-      <Container className="grid grid-cols-4 grid-rows-[auto] gap-8">
+      <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-rows-[auto] gap-8">
         <CurrentWeatherCard location={location} />
         <WeatherFeelsLike location={location} />
         <WeatherPrecipitation location={location} />
@@ -30,8 +30,8 @@ export const WeatherDashboard = ({ location }: WeatherDashboardProps) => {
         <WeatherWind location={location} />
         <WeatherMoonPhase />
         <WeatherSunSunset location={location} />
-        <HourlyForecastCard location={location} />
-        <WeatherForecast location={location} />
+        {/*<HourlyForecastCard location={location} />
+        <WeatherForecast location={location} /> */}
       </Container>
     </Section>
   )

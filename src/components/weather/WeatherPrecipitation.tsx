@@ -17,7 +17,7 @@ export const WeatherPrecipitation = ({ location }: WeatherCardBlockProps) => {
       title="Precipitation"
       icon="raindrops"
       iconAlt="Precipitation"
-      className="row-start-2 row-end-3 col-start-2 col-end-3"
+      className="row-start-3 row-end-4 col-start-1 col-end-2 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3"
     >
       {hasPrecipitation ? (
         <>

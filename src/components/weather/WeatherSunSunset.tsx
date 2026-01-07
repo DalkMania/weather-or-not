@@ -20,7 +20,7 @@ export const WeatherSunSunset = ({ location }: WeatherCardBlockProps) => {
       title={sunPosition > 50 ? `Sunset` : `Sunrise`}
       icon={sunIcon}
       iconAlt={sunPosition > 50 ? 'sunset' : 'sunrise'}
-      className="row-start-3 row-end-4 col-start-3 col-end-4"
+      className="row-start-7 row-end-8 md:row-start-4 md:row-end-5 lg:row-start-3 lg:row-end-4"
     >
       <h4 className="text-3xl text-center first-letter:uppercase">
         {timeString}

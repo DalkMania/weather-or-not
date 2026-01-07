@@ -31,7 +31,7 @@ export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
   } = conditions
 
   return (
-    <Card className="flex items-center col-start-1 col-end-4 row-start-1 row-end-2">
+    <Card className="flex items-center col-start-1 col-end-2 md:col-end-3 lg:col-end-4 row-start-1 row-end-2">
       <h2 className="uppercase font-sans text-muted-foreground font-normal">
         <span className="block text-center">{locationDisplay}</span>
         <span className="block text-center">
