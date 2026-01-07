@@ -1,9 +1,11 @@
 import { useRef } from 'react'
-import { Link } from '@tanstack/react-router'
+import { ClientOnly, Link } from '@tanstack/react-router'
 import { SelectDropdown } from '../weather/SelectDropdown'
 import { Container } from '@/components/layout/Container'
 import { useSticky } from '@/hooks/useSticky'
 import { WeatherOrNotLogoMark } from '@/components/icons/WeatherOrNotLogoMark'
+import { Button } from '../ui/button'
+import { SettingsIcon } from 'lucide-react'
 
 export const Header = () => {
   const headerRef = useRef(null)
@@ -31,7 +33,15 @@ export const Header = () => {
               Weather or Not ?
             </h1>
           </Link>
-          <SelectDropdown />
+          <ClientOnly
+            fallback={
+              <Button variant="outline">
+                <SettingsIcon /> Settings
+              </Button>
+            }
+          >
+            <SelectDropdown />
+          </ClientOnly>
         </nav>
       </Container>
     </header>

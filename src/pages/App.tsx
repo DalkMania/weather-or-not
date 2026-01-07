@@ -1,3 +1,4 @@
+import Typewriter from 'typewriter-effect'
 import { useState } from 'react'
 import { ClientOnly } from '@tanstack/react-router'
 import type { Location } from '@/types'
@@ -16,7 +17,21 @@ export const App = () => {
     <>
       <Section className="pt-16 pb-4">
         <Container>
-          <h1 className="text-center text-5xl">How's the sky looking today?</h1>
+          <h1 className="text-center text-5xl">
+            <Typewriter
+              options={{
+                strings: [
+                  'What’s the weather looking like today ?',
+                  'How are things shaping up outside ?',
+                  'Any idea what the weather has in store ?',
+                  'How’s the day looking weather-wise ?',
+                  'How’s the sky looking today ?',
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </h1>
         </Container>
       </Section>
       <Section>

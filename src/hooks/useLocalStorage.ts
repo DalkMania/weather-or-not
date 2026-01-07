@@ -1,8 +1,10 @@
 import { eq, useLiveQuery } from '@tanstack/react-db'
-import type { Favorite, Settings } from '@/db-collections'
+import type { Favorite } from '@/db-collections'
 import { settingsCollection } from '@/db-collections'
 
-const useLocalStorage = () => {
+type UnitType = 'imperial' | 'metric'
+
+export const useLocalStorage = () => {
   const { data: preferences, isReady } = useLiveQuery((q) =>
     q
       .from({ settings: settingsCollection })
@@ -31,10 +33,20 @@ const useLocalStorage = () => {
 export const useSettings = () => {
   const { preferences, settingsCollection: setCollection } = useLocalStorage()
 
-  const updateSettings = (updatedSettings: Partial<Settings>) => {
+  /* const updateSettings = (updatedSettings: Partial<Settings>) => {
     setCollection.update('user-settings', (draft) => {
       draft.settings = { ...draft.settings, ...updatedSettings }
     })
+  } */
+
+  const updateUnit = (unit: string) => {
+    setCollection.update('user-settings', (draft) => {
+      draft.settings.units = unit as UnitType
+    })
+  }
+
+  const getSettings = () => {
+    return preferences?.settings
   }
 
   const getFavorites = () => {
@@ -62,7 +74,8 @@ export const useSettings = () => {
 
   return {
     preferences,
-    updateSettings,
+    getSettings,
+    updateUnit,
     getFavorites,
     addFavorite,
     removeFavorite,

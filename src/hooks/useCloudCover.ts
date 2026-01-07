@@ -8,7 +8,7 @@ export const useCloudCover = (location: Location) => {
   const { data: weather } = useWeatherData({
     latitude: location.latitude,
     longitude: location.longitude,
-    units: preferences?.settings.units || 'imperial',
+    units: preferences?.settings.units!,
   })
 
   if (!weather?.current) {

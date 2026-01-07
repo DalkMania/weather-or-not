@@ -18,7 +18,7 @@
 export function formatTemperature(tempUnit: string, temp: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'unit',
-    unit: tempUnit === 'c' ? 'celsius' : 'fahrenheit',
+    unit: tempUnit === 'metric' ? 'celsius' : 'fahrenheit',
   }).format(Math.round(temp))
 }
 

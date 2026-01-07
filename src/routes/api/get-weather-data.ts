@@ -1,7 +1,6 @@
 import { fetchWeatherApi } from 'openmeteo'
 
 import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
 import type { OpenMeteoResponse } from '@/types'
 import { API_WEATHER } from '@/constants'
 
@@ -191,7 +190,10 @@ export const Route = createFileRoute('/api/get-weather-data')({
           })
         } catch (error) {
           console.error(error)
-          return json({ error: 'WeatherData not found' }, { status: 404 })
+          return Response.json(
+            { error: 'WeatherData not found' },
+            { status: 404 },
+          )
         }
       },
     },

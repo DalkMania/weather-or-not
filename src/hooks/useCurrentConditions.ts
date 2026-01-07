@@ -9,7 +9,7 @@ export const useCurrentConditions = (location: Location) => {
   const { data: weather } = useWeatherData({
     latitude: location.latitude,
     longitude: location.longitude,
-    units: preferences?.settings.units || 'imperial',
+    units: preferences?.settings.units!,
   })
 
   if (!weather?.current) {
@@ -37,7 +37,7 @@ export const useCurrentConditions = (location: Location) => {
 
   return {
     locationDisplay: location.display,
-    tempUnit: preferences?.settings.units || 'imperial',
+    tempUnit: preferences?.settings.units!,
     temperature: temperature_2m,
     apparentTemperature: apparent_temperature,
     forecastStatement,
