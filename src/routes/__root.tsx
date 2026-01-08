@@ -28,8 +28,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       {
         title: 'Weather or Not ?',
       },
+      {},
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'icon', href: '/favicon.svg' },
+      { rel: 'stylesheet', href: appCss },
+    ],
   }),
 
   shellComponent: RootComponent,
