@@ -3,6 +3,7 @@ import type { Favorite } from '@/db-collections'
 import { settingsCollection } from '@/db-collections'
 
 type UnitType = 'imperial' | 'metric'
+type ThemeType = 'light' | 'dark' | 'system'
 
 export const useLocalStorage = () => {
   const { data: preferences, isReady } = useLiveQuery((q) =>
@@ -45,6 +46,12 @@ export const useSettings = () => {
     })
   }
 
+  const updateTheme = (theme: string) => {
+    setCollection.update('user-settings', (draft) => {
+      draft.settings.theme = theme as ThemeType
+    })
+  }
+
   const getSettings = () => {
     return preferences?.settings
   }
@@ -76,6 +83,7 @@ export const useSettings = () => {
     preferences,
     getSettings,
     updateUnit,
+    updateTheme,
     getFavorites,
     addFavorite,
     removeFavorite,

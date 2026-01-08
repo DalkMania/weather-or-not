@@ -11,13 +11,30 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useSettings } from '@/hooks/useLocalStorage'
+import { useState, useEffect } from 'react'
+import { UserTheme, useTheme } from '../providers/ThemeProvider'
 
 export const SelectDropdown = () => {
-  const { getSettings, updateUnit } = useSettings()
+  const { getSettings, updateUnit, updateTheme } = useSettings()
+  const { setTheme } = useTheme()
   const settings = getSettings()
+  const [notCurrentUnit, setNotCurrentUnit] = useState(settings?.units)
+
+  useEffect(() => {
+    if (settings?.units === 'imperial') {
+      setNotCurrentUnit('metric')
+    } else {
+      setNotCurrentUnit('imperial')
+    }
+  }, [settings?.units])
 
   const handleUnitChange = (unit: string) => {
     updateUnit(unit)
+  }
+
+  const handleThemeChange = (theme: string) => {
+    setTheme(theme as UserTheme)
+    updateTheme(theme)
   }
 
   if (!settings) {
@@ -33,6 +50,20 @@ export const SelectDropdown = () => {
       </DropdownMenuTrigger>
       <ClientOnly>
         <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel
+            onClick={() =>
+              handleUnitChange(
+                settings?.units === 'metric' ? 'imperial' : 'metric',
+              )
+            }
+          >
+            Switch to{' '}
+            <span className="first-letter:uppercase inline-block hover:cursor-pointer">
+              {notCurrentUnit}
+            </span>{' '}
+            Units
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
           <DropdownMenuLabel>Temperature</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
@@ -84,6 +115,23 @@ export const SelectDropdown = () => {
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="in">
               Inches (in)
+            </DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuLabel>Toggle theme</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup
+            value={settings?.theme}
+            onValueChange={(value) => handleThemeChange(value)}
+          >
+            <DropdownMenuRadioItem value="light">
+              Light Theme
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="dark">
+              Dark Theme
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="system">
+              System Theme
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
