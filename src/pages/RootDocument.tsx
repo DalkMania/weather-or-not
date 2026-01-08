@@ -11,7 +11,7 @@ export const RootDocument = ({ children }: { children: React.ReactNode }) => {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="min-h-screen grid grid-rows-[auto_1fr_auto] h-full">
         <ThemeProvider>
           <RootLayout>{children}</RootLayout>
         </ThemeProvider>

@@ -4,12 +4,15 @@ import type { WeatherCardBlockProps } from '@/types'
 import { useForecast } from '@/hooks/useForecast'
 import { formatTemperature, formatTime } from '@/utils/formatting'
 import { getWeatherInfo } from '@/utils/conditions'
+import { Skeleton } from '../ui/skeleton'
 
 export const HourlyForecastCard = ({ location }: WeatherCardBlockProps) => {
   const forecastData = useForecast(location)
 
   if (!forecastData) {
-    return null
+    return (
+      <Skeleton className="w-full col-span-full xl:items-center xl:col-start-4 xl:col-end-5 xl:row-start-1 xl:row-end-4" />
+    )
   }
 
   const { weather, hourlyForecasts, tempUnit } = forecastData

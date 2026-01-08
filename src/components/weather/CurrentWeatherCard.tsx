@@ -5,6 +5,7 @@ import { useCurrentConditions } from '@/hooks/useCurrentConditions'
 import { formatTemperature } from '@/utils/formatting'
 import { useLastUpdated } from '@/hooks/useLastUpdated'
 import { useTime } from '@/hooks/useTime'
+import { Skeleton } from '../ui/skeleton'
 
 type WeatherCardBlockProps = {
   location: Location
@@ -16,7 +17,9 @@ export const CurrentWeatherCard = ({ location }: WeatherCardBlockProps) => {
   const currentTime = useTime(location.timezone)
 
   if (!conditions) {
-    return null
+    return (
+      <Skeleton className="flex h-116.25 rounded-lg w-full col-start-1 col-end-2 md:col-end-3 lg:col-end-4 row-start-1 row-end-2" />
+    )
   }
 
   const {

@@ -6,7 +6,7 @@ import { Section } from '@/components/layout/Section'
 import { Container } from '@/components/layout/Container'
 import { SearchInput } from '@/components/weather/SearchInput'
 import { WeatherDashboard } from '@/components/weather/WeatherDashboard'
-import { LoadingSkeleton } from '@/components/LoadingSkeleton'
+import { BarLoadingSkeleton } from '@/components/BarLoadingSkeleton'
 
 export const App = () => {
   const [selectedLocation, setSelectedLocation] = useState<
@@ -36,7 +36,7 @@ export const App = () => {
       </Section>
       <Section>
         <Container>
-          <ClientOnly fallback={<LoadingSkeleton />}>
+          <ClientOnly fallback={<BarLoadingSkeleton />}>
             <SearchInput
               selectedLocation={selectedLocation}
               setSelectedLocation={setSelectedLocation}

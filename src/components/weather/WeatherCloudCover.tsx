@@ -2,12 +2,15 @@ import { Progress } from '../ui/progress'
 import { WeatherCard } from './WeatherCard'
 import type { WeatherCardBlockProps } from '@/types'
 import { useCloudCover } from '@/hooks/useCloudCover'
+import { Skeleton } from '../ui/skeleton'
 
 export const WeatherCloudCover = ({ location }: WeatherCardBlockProps) => {
   const clouds = useCloudCover(location)
 
   if (!clouds) {
-    return null
+    return (
+      <Skeleton className="row-start-4 row-end-5 md:row-start-3 md:row-end-4 col-start-1 col-end-2 lg:row-start-2 lg:row-end-3 lg:col-start-3 lg:col-end-4" />
+    )
   }
 
   return (
