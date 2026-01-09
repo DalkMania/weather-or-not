@@ -11,7 +11,6 @@ export const useWeatherData = ({
     enabled: Boolean(latitude && longitude && units),
     refetchInterval: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
-    placeholderData: (prev) => prev,
     queryFn: async () => {
       try {
         const response = await fetch('/api/get-weather-data', {
