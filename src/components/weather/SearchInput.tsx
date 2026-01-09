@@ -56,6 +56,7 @@ export const SearchInput = ({
         value={value}
         className="h-16"
         selectedLocation={selectedLocation}
+        setValue={handleValueChange}
       />
 
       <CommandList>

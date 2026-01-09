@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
-import { HeartIcon, SearchIcon } from 'lucide-react'
+import { HeartIcon, SearchIcon, XIcon } from 'lucide-react'
 import { ClientOnly } from '@tanstack/react-router'
 import type { Location } from '@/types'
 import { cn } from '@/utils/utils'
@@ -10,11 +10,13 @@ type LocationInputProps = React.ComponentProps<
   typeof CommandPrimitive.Input
 > & {
   selectedLocation?: Location
+  setValue: (value: string) => void
 }
 
 export const LocationInput = ({
   className,
   selectedLocation,
+  setValue,
   ...props
 }: LocationInputProps) => {
   const { getFavorites, addFavorite, removeFavorite } = useSettings()
@@ -33,6 +35,10 @@ export const LocationInput = ({
           className,
         )}
         {...props}
+      />
+      <XIcon
+        className="size-4 shrink-0 opacity-50 hover:cursor-pointer"
+        onClick={() => setValue('')}
       />
       <ClientOnly
         fallback={
