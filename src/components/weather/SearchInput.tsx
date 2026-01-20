@@ -51,7 +51,7 @@ export const SearchInput = ({
     <Command className="rounded-lg border w-full max-w-4xl space-y-2 mx-auto">
       <LocationInput
         id={id}
-        placeholder="Type a command or search..."
+        placeholder="Search Location ..."
         onValueChange={handleValueChange}
         value={value}
         className="h-16"
