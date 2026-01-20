@@ -29,9 +29,9 @@ export const Header = () => {
         >
           <Link to="/" className="flex gap-1">
             <WeatherOrNotLogoMark />
-            <h1 className="text-3xl font-bold leading-16 pt-1">
+            <span className="font-serif text-2xl lg:text-3xl font-bold leading-16 pt-1">
               Weather or Not ?
-            </h1>
+            </span>
           </Link>
           <ClientOnly
             fallback={
