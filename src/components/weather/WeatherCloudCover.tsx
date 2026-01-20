@@ -20,7 +20,7 @@ export const WeatherCloudCover = ({ location }: WeatherCardBlockProps) => {
       iconAlt="Cloud Coverage"
       className="row-start-4 row-end-5 md:row-start-3 md:row-end-4 col-start-1 col-end-2 lg:row-start-2 lg:row-end-3 lg:col-start-3 lg:col-end-4"
     >
-      <h4 className="text-3xl">{clouds.cloudCover}%</h4>
+      <h3 className="text-3xl">{clouds.cloudCover}%</h3>
       <div className="px-4 w-full">
         <Progress
           value={clouds.cloudCover}

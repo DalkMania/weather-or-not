@@ -44,9 +44,9 @@ export const HourlyForecastCard = ({ location }: WeatherCardBlockProps) => {
 
                 <Icon icon={icon} size={64} />
 
-                <h4 className="text-xl">
+                <h3 className="text-xl">
                   {formatTemperature(tempUnit, forecast.temp)}
-                </h4>
+                </h3>
                 <p className="text-sm text-muted-foreground mt-auto">
                   {description}
                 </p>
