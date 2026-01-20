@@ -23,20 +23,20 @@ export const WeatherPrecipitation = ({ location }: WeatherCardBlockProps) => {
         <>
           {hasRain && (
             <>
-              <h4 className="text-3xl">{formattedRain}</h4>
+              <h3 className="text-3xl">{formattedRain}</h3>
               <p className="text-sm text-muted-foreground mt-auto">Rain</p>
             </>
           )}
           {hasSnow && (
             <>
-              <h4 className="text-3xl">{formattedSnow}</h4>
+              <h3 className="text-3xl">{formattedSnow}</h3>
               <p className="text-sm text-muted-foreground mt-auto">Snow</p>
             </>
           )}
         </>
       ) : (
         <>
-          <h4 className="text-3xl">None</h4>
+          <h3 className="text-3xl">None</h3>
           <p className="text-sm text-muted-foreground mt-auto">{description}</p>
         </>
       )}

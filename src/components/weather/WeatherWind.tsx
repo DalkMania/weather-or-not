@@ -15,9 +15,9 @@ export const WeatherWind = ({ location }: WeatherCardBlockProps) => {
       iconAlt="Wind Information"
       className="row-start-5 row-end-6 col-start-1 col-end-2 md:row-start-3 md:row-end-4 md:col-start-2 md:col-end-3 lg:col-start-1 lg:col-end-2"
     >
-      <h4 className="text-3xl">
+      <h3 className="text-3xl">
         {windSpeed} {speedUnit}
-      </h4>
+      </h3>
       <div className="flex justify-between w-full mt-auto px-4">
         <div className="flex flex-col items-center">
           <h4 className="text-base">Gusts</h4>

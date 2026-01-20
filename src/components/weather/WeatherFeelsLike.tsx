@@ -26,7 +26,7 @@ export const WeatherFeelsLike = ({ location }: WeatherCardBlockProps) => {
         Feels Like
       </h2>
       <Icon icon={icon} alt="feels like" />
-      <h4 className="text-3xl">{formatTemperature(unit, feelsLike)}</h4>
+      <h3 className="text-3xl">{formatTemperature(unit, feelsLike)}</h3>
       <p className="text-sm text-muted-foreground mt-auto">{description}</p>
     </Card>
   )

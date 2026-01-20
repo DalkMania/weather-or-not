@@ -59,9 +59,9 @@ export const WeatherForecast = ({ location }: WeatherCardBlockProps) => {
 
               <Icon icon={icon} size={64} />
 
-              <h4 className="text-xl">
+              <h3 className="text-xl">
                 {formatTemperature(tempUnit, forecast.temp_min)}
-              </h4>
+              </h3>
             </div>
 
             <div className="flex-1 h-1 rounded-[2px] bg-transparent min-w-20 relative overflow-visible">
@@ -82,9 +82,9 @@ export const WeatherForecast = ({ location }: WeatherCardBlockProps) => {
               )}
             </div>
 
-            <h4 className="text-xl">
+            <h3 className="text-xl">
               {formatTemperature(tempUnit, forecast.temp_max)}
-            </h4>
+            </h3>
           </div>
         )
       })}
