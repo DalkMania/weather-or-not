@@ -10,7 +10,7 @@ export const useWeatherData = ({
     queryKey: ['weather', latitude, longitude, units],
     enabled: Boolean(latitude && longitude && units),
     refetchInterval: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     queryFn: async () => {
       try {
         const response = await fetch('/api/get-weather-data', {
