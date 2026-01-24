@@ -1,12 +1,19 @@
 import { WeatherCard } from './WeatherCard'
 import type { WeatherCardBlockProps } from '@/types'
 import { useWindData } from '@/hooks/useWindData'
+import { Skeleton } from '../ui/skeleton'
 
 export const WeatherWind = ({ location }: WeatherCardBlockProps) => {
   const { windSpeed, windGusts, windDirection, directionLabel, speedUnit } =
     useWindData(location)
 
   const windIcon = windSpeed < 4 ? 'windsock-weak' : 'windsock'
+
+  if (!windSpeed || !windGusts || !windDirection) {
+    return (
+      <Skeleton className="row-start-5 row-end-6 col-start-1 col-end-2 md:row-start-3 md:row-end-4 md:col-start-2 md:col-end-3 lg:col-start-1 lg:col-end-2" />
+    )
+  }
 
   return (
     <WeatherCard

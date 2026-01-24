@@ -1,6 +1,7 @@
 import { WeatherCard } from './WeatherCard'
 import type { WeatherCardBlockProps } from '@/types'
 import { usePrecipitation } from '@/hooks/usePrecipitation'
+import { Skeleton } from '../ui/skeleton'
 
 export const WeatherPrecipitation = ({ location }: WeatherCardBlockProps) => {
   const {
@@ -11,6 +12,12 @@ export const WeatherPrecipitation = ({ location }: WeatherCardBlockProps) => {
     hasPrecipitation,
     description,
   } = usePrecipitation(location)
+
+  if (!formattedRain || !formattedSnow || !description) {
+    return (
+      <Skeleton className="row-start-3 row-end-4 col-start-1 col-end-2 md:col-start-2 md:col-end-3 md:row-start-2 md:row-end-3" />
+    )
+  }
 
   return (
     <WeatherCard

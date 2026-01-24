@@ -3,6 +3,7 @@ import { WeatherCard } from './WeatherCard'
 import type { WeatherCardBlockProps } from '@/types'
 import { useSunriseSunset } from '@/hooks/useSunriseSunset'
 import { formatRelativeFromMs, formatRelativeToMs } from '@/utils/formatting'
+import { Skeleton } from '../ui/skeleton'
 
 export const WeatherSunSunset = ({ location }: WeatherCardBlockProps) => {
   const { sunrise, sunset, sunPosition, timeZone, sunriseISO, sunsetISO } =
@@ -14,6 +15,12 @@ export const WeatherSunSunset = ({ location }: WeatherCardBlockProps) => {
     sunriseISO!,
     sunsetISO!,
   )
+
+  if (!sunrise || !sunset || !timeZone || !sunriseISO || !sunsetISO) {
+    return (
+      <Skeleton className="row-start-7 row-end-8 md:row-start-4 md:row-end-5 lg:row-start-3 lg:row-end-4" />
+    )
+  }
 
   return (
     <WeatherCard

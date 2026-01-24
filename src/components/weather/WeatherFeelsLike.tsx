@@ -3,6 +3,7 @@ import Icon from '../icons/Icon'
 import type { Location } from '@/types'
 import { useFeelsLike } from '@/hooks/useFeelsLike'
 import { formatTemperature } from '@/utils/formatting'
+import { Skeleton } from '../ui/skeleton'
 
 type WeatherCardBlockProps = {
   location: Location
@@ -19,6 +20,10 @@ const getThermometerIcon = (feels: number, actual: number) => {
 export const WeatherFeelsLike = ({ location }: WeatherCardBlockProps) => {
   const { feelsLike, actual, unit, description } = useFeelsLike(location)
   const icon = getThermometerIcon(feelsLike, actual)
+
+  if (!feelsLike || !actual) {
+    return <Skeleton className="row-start-2 row-end-3 col-start-1 col-end-2" />
+  }
 
   return (
     <Card className="row-start-2 row-end-3 col-start-1 col-end-2 flex flex-col items-center">
