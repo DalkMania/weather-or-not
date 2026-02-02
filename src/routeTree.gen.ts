@@ -9,16 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiGetWeatherDataRouteImport } from './routes/api/get-weather-data'
 import { Route as ApiGetGeoCodeRouteImport } from './routes/api/get-geo-code'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,52 +31,36 @@ const ApiGetGeoCodeRoute = ApiGetGeoCodeRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/api/get-geo-code': typeof ApiGetGeoCodeRoute
   '/api/get-weather-data': typeof ApiGetWeatherDataRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/api/get-geo-code': typeof ApiGetGeoCodeRoute
   '/api/get-weather-data': typeof ApiGetWeatherDataRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/api/get-geo-code': typeof ApiGetGeoCodeRoute
   '/api/get-weather-data': typeof ApiGetWeatherDataRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/api/get-geo-code' | '/api/get-weather-data'
+  fullPaths: '/' | '/api/get-geo-code' | '/api/get-weather-data'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/api/get-geo-code' | '/api/get-weather-data'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/api/get-geo-code'
-    | '/api/get-weather-data'
+  to: '/' | '/api/get-geo-code' | '/api/get-weather-data'
+  id: '__root__' | '/' | '/api/get-geo-code' | '/api/get-weather-data'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   ApiGetGeoCodeRoute: typeof ApiGetGeoCodeRoute
   ApiGetWeatherDataRoute: typeof ApiGetWeatherDataRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -109,7 +87,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   ApiGetGeoCodeRoute: ApiGetGeoCodeRoute,
   ApiGetWeatherDataRoute: ApiGetWeatherDataRoute,
 }
