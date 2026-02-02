@@ -99,7 +99,7 @@ export const SearchInput = ({
           )}
 
           <CommandSeparator />
-          {results.length > 0 && (
+          {results.length > 0 && value !== selectedLocation?.display && (
             <CommandGroup heading="Search Results">
               {results.map((item) => (
                 <CommandItem

@@ -13,6 +13,7 @@ import {
 import { useSettings } from '@/hooks/useLocalStorage'
 import { useState, useEffect } from 'react'
 import { UserTheme, useTheme } from '../providers/ThemeProvider'
+import { capitalizeFirstLetter } from '@/utils/formatting'
 
 export const SelectDropdown = () => {
   const { getSettings, updateUnit, updateTheme } = useSettings()
@@ -57,11 +58,9 @@ export const SelectDropdown = () => {
               )
             }
           >
-            Switch to{' '}
             <span className="first-letter:uppercase inline-block hover:cursor-pointer">
-              {notCurrentUnit}
-            </span>{' '}
-            Units
+              Switch to {capitalizeFirstLetter(notCurrentUnit!)} Units
+            </span>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuLabel>Temperature</DropdownMenuLabel>

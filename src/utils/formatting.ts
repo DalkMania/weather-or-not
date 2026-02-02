@@ -219,3 +219,7 @@ export function formatRelativeToMs(diffMs: number): string {
   const days = Math.round(safe / day)
   return `in about ${days} day${days === 1 ? '' : 's'}`
 }
+
+export function capitalizeFirstLetter(val: string) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1)
+}
