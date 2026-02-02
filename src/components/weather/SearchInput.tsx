@@ -10,7 +10,6 @@ import {
   CommandGroup,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from '@/components/ui/command'
 import { defaultSuggestions } from '@/utils/default-suggestions'
 import { useGeoCode } from '@/queries/useGeoCode'
@@ -61,7 +60,9 @@ export const SearchInput = ({
 
       <CommandList>
         <ClientOnly>
-          <CommandEmpty>No results found.</CommandEmpty>
+          {results.length === 0 && !selectedLocation && (
+            <CommandEmpty>No results found.</CommandEmpty>
+          )}
           {favorites.length === 0 ? (
             <CommandGroup heading="Suggestions">
               {defaultSuggestions.map((item) => (
@@ -97,8 +98,6 @@ export const SearchInput = ({
               ))}
             </CommandGroup>
           )}
-
-          <CommandSeparator />
           {results.length > 0 && value !== selectedLocation?.display && (
             <CommandGroup heading="Search Results">
               {results.map((item) => (
